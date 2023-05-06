@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
+import ParseQuery from "../utils/ParseQuery";
 
 const SingleRecipe = () => {
   const [singleRecipe, setSingleRecipe] = useState([]);
   let params = useParams();
 
   const getSingleRecipe = async (name) => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=12&query=${name}`
-    );
+    const api = await ParseQuery.queryData(name);
+
     const data = await api.json();
     setSingleRecipe(data.results);
   };
