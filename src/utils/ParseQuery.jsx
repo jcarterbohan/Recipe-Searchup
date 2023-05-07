@@ -9,7 +9,6 @@ const parseData = (data) => {
         if (d.includes(":")) {
             const keyVal = d.split(":");
             if (validKeys.includes(keyVal[0])) {
-                if (keyVal[0] === "carbs" || keyVal[0] === "calories") {
                     const newVal = keyVal[0].charAt(0).toUpperCase() + keyVal[0].slice(1);
                     if (keyVal[1].charAt(0) === ">") {
                         dataObj["min" + newVal] = keyVal[1].substring(1);
@@ -17,7 +16,6 @@ const parseData = (data) => {
                     if (keyVal[1].charAt(0) === "<") {
                         dataObj["max" + newVal] = keyVal[1].substring(1);
                     }
-                }
                 else{
                 dataObj[keyVal[0]] = keyVal[1];
                 }
