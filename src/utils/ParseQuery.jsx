@@ -1,7 +1,7 @@
 const validKeys = ["cuisine", "excludeCuisine", "diet", "intolerences", "carbs", "calories"]
 
 const parseData = (data) => {
-    const dataArr = data.match(/(?:[^\s"]+|"[^"]*")+/g);
+    const dataArr = data.match(/(?:[^\s"\\[\]]+|\\.|"(?:\\.|[^"\\])*"|\[[^\]]*\])+/g);
     console.log(dataArr);
     const dataObj = {};
     dataObj["query"] = "";
